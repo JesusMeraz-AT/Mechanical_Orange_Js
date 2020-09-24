@@ -1,11 +1,14 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose')
 
-const { TUTORIALS_APP_MONGODB_HOST, TUTORIALS_APP_MONGODB_DATABASE } = process.env;
-const MONGODB_URI = `mongodb://${TUTORIALS_APP_MONGODB_HOST}/${TUTORIALS_APP_MONGODB_DATABASE}`;
 
-mongoose.connect(MONGODB_URI, {
+const { NOTES_APP_MONGODB_HOST, NOTES_APP_MONGODB_DATABASE } = process.env;
+const MONGODB_URL = 'mongodb://' + NOTES_APP_MONGODB_HOST + '/' + NOTES_APP_MONGODB_DATABASE;
+
+mongoose.connect(MONGODB_URL, {
     useUnifiedTopology: true,
-    useNewUrlParser: true
-})
-    .then(db => console.log("Database is connected"))
-    .catch(err => console.log(err));
+    useNewUrlParser: true 
+})  
+
+.then(db => console.log('Database is connected'))
+.catch(err => console.log(err));
+
