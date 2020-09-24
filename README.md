@@ -4,9 +4,6 @@ This app can:
 - create/read/update/delete Tutorials
 - Allows a user to do log in and save his personal tutorials
 
-# Screenshot
-![](docs/tasks.png)
-
 # Environment Variables
 This app needs the following environment Variables
 * `MONGODB_HOST` this is the Mongodb URI string
@@ -24,9 +21,3 @@ docker-compose up
 * [Materia Bootswatch](https://www.bootstrapcdn.com/bootswatch/)
 * [CSS Background uiGradients](https://uigradients.com/#Dull)
 
-# Tutorial
-This app was created with educational purposes, so you can found the tutorials in the following links:
-* [Version 2](https://www.youtube.com/playlist?list=PLo5lAe9kQrwqUEXK7oQbzv63KsdODzuAy), new tutorial made in 2020
-
-and these are old tutorials about this app
-* [Version 1.0.0](https://youtu.be/-bI0diefasA)
