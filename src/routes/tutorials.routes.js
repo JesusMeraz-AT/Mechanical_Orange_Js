@@ -1,23 +1,33 @@
-const { Router } =require("express");
+const express = require("express");
+const router = express.Router();
 
-const router = Router();
+// Controller
+const {
+  renderTutorialForm,
+  createNewTutorial,
+  renderTutorials,
+  renderEditForm,
+  updateTutorial,
+  deleteTutorial
+} = require("../controllers/tutorials.controller");
 
-const { renderTutorialForm, createNewTutorial, renderTutorials, renderEditForm, updateTuto, deleteTuto } =  require("../controllers/tutorials.controllers");
+// Helpers
+const { isAuthenticated } = require("../helpers/auth");
 
-// New tutorials
-router.get("/tutorials/add", renderTutorialForm)
+// New Tutorial
+router.get("/tutorials/add", isAuthenticated, renderTutorialForm);
 
-router.post("/tutorials/new-tuto", createNewTutorial)
+router.post("/tutorials/new-tutorial", isAuthenticated, createNewTutorial);
 
-// Get all tutorials
-router.get("/tutorials", renderTutorials)
+// Get All Tutorials
+router.get("/tutorials", isAuthenticated, renderTutorials);
 
-// Edit tutorials
-router.get("/tutorials/edit/:id", renderEditForm)
+// Edit Tutorials
+router.get("/tutorials/edit/:id", isAuthenticated, renderEditForm);
 
-router.put("/tutorials/edit/:id", updateTuto)
+router.put("/tutorials/edit-tutorial/:id", isAuthenticated, updateTutorial);
 
-// Delete tutorials
-router.delete("/tutorials/edit/:id", deleteTuto)
+// Delete Tutorials
+router.delete("/tutorials/delete/:id", isAuthenticated, deleteTutorial);
 
 module.exports = router;
