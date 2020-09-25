@@ -1,5 +1,5 @@
-const { Schema, model } = require ("mongoose");
-const bcrypt = require("bcryptjs");
+const { Schema, model } = require ("mongoose"); // Maneja la base de datos de mongodb
+const bcrypt = require("bcryptjs"); // Es un modulo de cifrado, como las contraseñas
 
 const UserSchema = new Schema({
     name: { type: String, required: true },

@@ -1,39 +1,37 @@
-//SERVIDOR WEB BÁSICO CON EXPRESS
-const express = require("express");
-const exphbs = require("express-handlebars");
+const express = require ("express"); // Es un Framework de servidor
+const exphbs = require ("express-handlebars"); // Crea vistas HTML
 const path = require("path");
-const morgan = require("morgan");
+const morgan = require('morgan');
 
 
-//Initializations
+// Initializations
+
 const app = express();
 
-// Settings -- lo que quiero que haga express basado en módulos
+// Settings
 app.set("port", process.env.PORT || 4000);
-app.set("views", path.join(__dirname, "views"));
-app.engine(
-  ".hbs",
-  exphbs({
-    defaultLayout: "default",
+app.set("views", path.join(__dirname, "views")) // El uso de path.join permite accedera esta carpeta desde cualquier OS
+app.engine(".hbs", exphbs({
+    defaultLayout: "main", 
     layoutsDir: path.join(app.get("views"), "layouts"),
     partialsDir: path.join(app.get("views"), "partials"),
     extname: ".hbs",
-  })
-);
+}));
+
 app.set("view engine", ".hbs");
 
-// Middleware --funciones ejecutadas a medida que van llegando peticiones
-app.use(morgan("dev")); //permite ver las peticiones
-app.use(express.urlencoded({extended:false})); //convertir datos en formularios a formato .JSON
-// Global variables
+//Middlewares 
+app.use(morgan('dev'));
+app.use(express.urlencoded({extended: false}));
 
-// Routes
-app.use(require("./routes/index.routes"));
-app.use(require("./routes/tutorials.routes"));
+// Global Variables
 
+
+//Routes
+app.use(require('./routes/index.routes'));
+app.use(require('./routes/notes.routes'));
 
 // Static files
 app.use(express.static(path.join(__dirname, "public")));
-
 
 module.exports = app;

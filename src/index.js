@@ -1,4 +1,5 @@
-require ('dotenv').config();
+require ('dotenv').config(); 
+    // dotenv - nos permite utilizar variables de entorno
 
 const app = require('./server');
 require('./database');
